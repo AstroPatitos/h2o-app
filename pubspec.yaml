@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   bloc: ^8.1.2
   provider: ^6.0.5
+  home_widget: ^0.3.0
   google_maps_flutter: ^2.3.0
   geekyants_flutter_gauges: ^1.0.3
   flutter_svg: ^2.0.5

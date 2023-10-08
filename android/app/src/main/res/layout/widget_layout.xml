@@ -1,0 +1,71 @@
+<FrameLayout
+    android:id="@+id/widget_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="180dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BFE1E1E1">
+
+        <!-- Título en la parte superior izquierda -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="12dp"
+            android:text="Título"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" /> 
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/tv_title"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/imagen1" />
+
+        <!-- Texto debajo de la primera imagen -->
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/image1"
+            android:layout_marginStart="34dp"
+            android:text="Quality of Water"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/tv_title"
+            android:layout_centerVertical="true" 
+            android:layout_marginEnd="50dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/imagen2" />
+
+        <!-- Texto debajo de la segunda imagen -->
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/image2"
+            android:layout_marginEnd="31dp"
+            android:text="Swimming safety"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</FrameLayout>

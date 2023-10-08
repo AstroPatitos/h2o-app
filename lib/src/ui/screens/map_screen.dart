@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,6 +15,14 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController _controller;
 
+  void initState() {
+    super.initState();
+    
+    HomeWidget.widgetClicked.listen((val) {
+      Navigator.of(context).pushNamedAndRemoveUntil('generalInformation', (route) => false);
+    });
+  }
+  
   Future<String> _loadMapStyle() async {
     return await rootBundle.loadString('lib/src/models/custom_map_style.json');
   }
