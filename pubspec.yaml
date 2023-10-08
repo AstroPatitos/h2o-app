@@ -37,7 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   bloc: ^8.1.2
   provider: ^6.0.5
-  google_maps_flutter: ^2.3.0
+  home_widget: ^0.3.0
+  flutter_secure_storage: ^9.0.0
 
 dev_dependencies:
   flutter_test:

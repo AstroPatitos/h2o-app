@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_map/plugin_api.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:home_widget/home_widget.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -11,18 +11,21 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  late GoogleMapController _controller;
+  //late GoogleMapController _controller;
 
+  void initState() {
+    super.initState();
+    
+    HomeWidget.widgetClicked.listen((val) {
+      Navigator.of(context).pushNamedAndRemoveUntil('generalInformation', (route) => false);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Map Screen'),
         ),
-        body: GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: LatLng(0, 0),
-          ),
-        ));
+        body: Text("Mapa"));
   }
 }
