@@ -38,7 +38,9 @@ dependencies:
   bloc: ^8.1.2
   provider: ^6.0.5
   home_widget: ^0.3.0
-  flutter_secure_storage: ^9.0.0
+  google_maps_flutter: ^2.3.0
+  geekyants_flutter_gauges: ^1.0.3
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,8 @@ flutter:
   
   assets:
    - assets/
+   - assets/icons/
+   - lib/src/models/custom_map_style.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
