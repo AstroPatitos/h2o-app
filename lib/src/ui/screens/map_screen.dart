@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:h2o_app/src/helpers/printers.dart';
 import 'package:h2o_app/src/services/location_service.dart';
+import 'package:h2o_app/src/ui/components/colors.dart';
 import 'package:h2o_app/src/ui/screens/general_information_screen.dart';
 import 'package:home_widget/home_widget.dart';
 
@@ -14,12 +18,24 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController _controller;
+  final LatLng gulfOfMexicoCenter = const LatLng(25.1557, -94.8607);
+
+  final Set<LatLng> waterBodies = {
+    const LatLng(25.1557, -90.8607),
+  };
+  final double radius = 25;
 
   @override
   void initState() {
     super.initState();
 
-    LocationService().getLocations().then((locations) {});
+    /* _loadPoints().then((value) {
+      value.forEach((v) {
+        waterBodies.add(
+            LatLng(double.parse(v['latitude']), double.parse(v['longitude'])));
+      });
+    }); */
+    waterBodies.add(const LatLng(18.193717, -110.080321));
 
     HomeWidget.widgetClicked.listen((val) {
       Navigator.of(context)
@@ -31,21 +47,22 @@ class _MapScreenState extends State<MapScreen> {
     return await rootBundle.loadString('lib/src/models/custom_map_style.json');
   }
 
-  final LatLng gulfOfMexicoCenter = const LatLng(25.1557, -94.8607);
-
-  final Set<LatLng> waterBodies = {
-    const LatLng(25.1557, -94.8607),
-  };
-
-  final LatLng upperLeftCorner = const LatLng(30.0, -90.0);
-  final LatLng lowerRightCorner = const LatLng(20.0, -80.0);
-  final double radius = 25;
+  Future<dynamic> _loadPoints() async {
+    dynamic test = jsonDecode(
+      await rootBundle.loadString('lib/src/models/points.json'),
+    );
+    return test;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Map Screen'),
+        title: const Text(
+          'H2O Map',
+          style: TextStyle(color: primaryColor),
+        ),
+        backgroundColor: Colors.white,
       ),
       body: GoogleMap(
         initialCameraPosition: const CameraPosition(

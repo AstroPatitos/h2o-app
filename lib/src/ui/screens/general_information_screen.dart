@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geekyants_flutter_gauges/geekyants_flutter_gauges.dart';
 import 'package:h2o_app/src/services/location_service.dart';
 import 'package:h2o_app/src/ui/components/box_decoration.dart';
+import 'package:h2o_app/src/ui/components/colors.dart';
 import 'package:h2o_app/src/ui/widgets/custom/radial_gauge/custom_radial_gauge.dart';
 
 class GeneralInformationScreen extends StatefulWidget {
@@ -48,13 +49,14 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
   }
 
   Color _getDangerousColor(int level) {
-    if (level == 0) {
+    /* if (level == 0) {
       return Colors.green;
     } else if (level == 1) {
       return const Color.fromARGB(255, 238, 226, 115);
     } else {
       return Colors.red;
-    }
+    } */
+    return Colors.black;
   }
 
   Color _getDangerousBackgroundColor(int level) {
@@ -94,14 +96,24 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
       height: 80,
       child: BottomNavigationBar(
         onTap: (index) {},
-        currentIndex: 1,
+        currentIndex: 0,
         type: BottomNavigationBarType.fixed,
-        items: const [
+        backgroundColor: Colors.white,
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.insert_drive_file), label: 'Local fauna'),
-          BottomNavigationBarItem(icon: Icon(Icons.comment), label: 'Reviews'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.lightbulb), label: 'Fun facts'),
+              icon: SvgPicture.asset(
+                'assets/icons/fish.svg',
+                width: 32,
+                height: 32,
+                colorFilter:
+                    const ColorFilter.mode(primaryColor, BlendMode.srcIn),
+              ),
+              label: 'Local fauna'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.comment, color: primaryColor), label: 'Reviews'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.lightbulb, color: primaryColor),
+              label: 'Fun facts'),
         ],
       ),
     );
@@ -200,7 +212,7 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
                     'Quality of Water',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF860000),
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -236,14 +248,14 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
                   size: 95,
                 ),
               ),
-              Column(
-                children: const [
+              const Column(
+                children: [
                   SizedBox(height: 87),
                   Text(
                     'Swimming Safety',
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF860000),
+                      color: Colors.black,
                     ),
                   ),
                 ],
@@ -257,7 +269,14 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lago Chernobyl'),
+        iconTheme: const IconThemeData(
+          color: primaryColor, // Change this to your desired color
+        ),
+        title: const Text(
+          'Laguna La Mancha',
+          style: TextStyle(color: primaryColor),
+        ),
+        backgroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(
@@ -268,6 +287,7 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
           )
         ],
       ),
+      backgroundColor: const Color.fromARGB(255, 245, 245, 245),
       bottomNavigationBar: _renderBottomBar(context),
       body: SingleChildScrollView(
         child: Container(
@@ -289,7 +309,9 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 width: MediaQuery.of(context).size.width,
-                decoration: customBoxDecoration(15),
+                decoration: customBoxDecoration(
+                  15,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -299,6 +321,8 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
                         'Danger factors',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: primaryColor,
                         ),
                       ),
                     ),
@@ -330,6 +354,7 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
                                         Text(
                                           dangerFactor['title'],
                                           style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                             color: _getDangerousColor(
                                                 dangerFactor['level']),
                                           ),
