@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:h2o_app/src/ui/screens/general_information_screen.dart';
 import 'package:h2o_app/src/ui/screens/map_screen.dart';
 import 'package:h2o_app/src/ui/screens/splash_screen.dart';
+import 'package:h2o_app/src/ui/screens/animal_display_screen.dart';
+
+
 import 'package:provider/provider.dart';
 import 'package:home_widget/home_widget.dart';
 
@@ -11,8 +14,8 @@ import 'package:home_widget/home_widget.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   HomeWidget.registerBackgroundCallback(backgroundCallback);
-  HomeWidget.widgetClicked.listen((val) {
-    print("test: $val");
+  HomeWidget.initiallyLaunchedFromHomeWidget().then((val) {
+
   });
   runApp(const MyApp());
 }
@@ -68,6 +71,7 @@ class _MyAppState extends State<MyApp> {
         'splash': (_) => const SplashScreen(),
         'main': (context) => const MapScreen(),
         'generalInformation': (context) => const GeneralInformationScreen(),
+        'animalDisplay': (context) => const AnimalDisplayScreen()
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],

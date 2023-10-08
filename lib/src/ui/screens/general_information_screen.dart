@@ -88,11 +88,26 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
     }
   }
 
+  int _currentIndex = 0;
   SizedBox _renderBottomBar(BuildContext context) {
     return SizedBox(
       height: 80,
       child: BottomNavigationBar(
-        onTap: (index) {},
+        onTap: (index) {
+          print("Index: $index");
+        // Manejar la navegación aquí
+        if (index == 0) {
+          // Si se hace clic en "Local Fauna", navegar a "animalDisplay"
+          Navigator.pushNamed(context, 'animalDisplay');
+        } else {
+          // Otros casos de navegación aquí
+          // Por ejemplo, si tienes más elementos en el BottomNavigationBar
+        }
+        // Actualizar el índice seleccionado
+        setState(() {
+          _currentIndex = index;
+        });
+      },
         currentIndex: 1,
         type: BottomNavigationBarType.fixed,
         items: const [

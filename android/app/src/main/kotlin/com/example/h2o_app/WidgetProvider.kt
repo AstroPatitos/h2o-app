@@ -22,7 +22,7 @@ class AppWidgetProvider : HomeWidgetProvider() {
                     )
                 setOnClickPendingIntent(R.id.widget_root, pendingIntent)
 
-                var counterText = "Rio Pirai";
+                var counterText = "Golfo de Mexico";
 
                 setTextViewText(R.id.tv_title, counterText);
 
