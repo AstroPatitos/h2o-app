@@ -41,6 +41,7 @@ dependencies:
   google_maps_flutter: ^2.3.0
   geekyants_flutter_gauges: ^1.0.3
   flutter_svg: ^2.0.5
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geekyants_flutter_gauges/geekyants_flutter_gauges.dart';
+import 'package:h2o_app/src/services/location_service.dart';
 import 'package:h2o_app/src/ui/components/box_decoration.dart';
 import 'package:h2o_app/src/ui/widgets/custom/radial_gauge/custom_radial_gauge.dart';
 

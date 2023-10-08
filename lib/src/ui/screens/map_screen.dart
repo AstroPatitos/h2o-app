@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:h2o_app/src/services/location_service.dart';
 import 'package:h2o_app/src/ui/screens/general_information_screen.dart';
 import 'package:home_widget/home_widget.dart';
 
@@ -17,6 +18,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
+
+    LocationService().getLocations().then((locations) {});
 
     HomeWidget.widgetClicked.listen((val) {
       Navigator.of(context)
