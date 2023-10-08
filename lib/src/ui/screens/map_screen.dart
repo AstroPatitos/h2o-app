@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:h2o_app/src/helpers/printers.dart';
+import 'package:h2o_app/src/ui/screens/general_information_screen.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -66,7 +67,11 @@ class _MapScreenState extends State<MapScreen> {
               northeast: LatLng(
                   waterBody.latitude + radius, waterBody.longitude + radius),
             ).contains(latLng)) {
-              printWarning('Tapped on a water body');
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const GeneralInformationScreen(),
+                ),
+              );
               break;
             }
           }

@@ -38,6 +38,8 @@ dependencies:
   bloc: ^8.1.2
   provider: ^6.0.5
   google_maps_flutter: ^2.3.0
+  geekyants_flutter_gauges: ^1.0.3
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
